@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+
+        
+<div id="divaya"> </div>
+
+
+
+
+        <script>
+
+
+           async function getProducts(){
+                var zeft = await fetch(`https://dummyjson.com/products`);
+                 finalZeft = await zeft.json();
+                console.log(finalZeft.products[1].title);
+                displayProducts ();
+            }
+
+            function displayProducts (){
+               var cartona = ``;
+               console.log(finalZeft.products.length);
+               console.log(finalZeft.products[4].title);
+               console.log(finalZeft.products[4].description);
+               for (var i=0; i< finalZeft.products.length; i++){
+                cartona += `
+                <div>
+                    <img src='${finalZeft.products[i].images[2]}'>
+                    <h1> ${finalZeft.products[i].title} </h1>
+                    <h3> ${finalZeft.products[i].description} </h3>
+                    <h3> Price  :  ${finalZeft.products[i].price} </h3>
+                </div>
+                `
+               }
+               
+               document.getElementById("divaya").innerHTML = cartona;
+            }
+            getProducts();
+
+
+            
+
+        </script>
+    </body>
+</html> 
